@@ -289,12 +289,12 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 748px;
+  max-width: 620px;
   aspect-ratio: 1483 / 97;
   box-sizing: border-box;
-  padding: 0 96px;
+  padding: 0 80px;
   overflow: hidden;
-  background: url('${U.buttomM}') center / calc(100% - 116px) 49px no-repeat;
+  background: url('${U.buttomM}') center / calc(100% - 96px) 41px no-repeat;
   color: #16305f;
 }
 /* 数据文本模块：单向循环走马灯（底部滑入 → 顶部滑出，永不回滚），每模块可见 5 秒。
@@ -305,8 +305,8 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > 
   left: 0;
   right: 0;
   top: 0;
-  height: 49px;
-  line-height: 49px;
+  height: 41px;
+  line-height: 41px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -328,9 +328,9 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span)::b
   left: 0;
   top: 0;
   bottom: 0;
-  width: 58px;
+  width: 48px;
   pointer-events: none;
-  background: url('${U.talkingbarButtom}') left center / calc(1483px * 49 / 97) 49px no-repeat;
+  background: url('${U.talkingbarButtom}') left center / calc(1483px * 41 / 97) 41px no-repeat;
 }
 body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span)::after {
   content: '';
@@ -338,9 +338,9 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span)::a
   right: 0;
   top: 0;
   bottom: 0;
-  width: 58px;
+  width: 48px;
   pointer-events: none;
-  background: url('${U.talkingbarButtom}') right center / calc(1483px * 49 / 97) 49px no-repeat;
+  background: url('${U.talkingbarButtom}') right center / calc(1483px * 41 / 97) 41px no-repeat;
 }
 body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > * {
   position: relative;
@@ -420,7 +420,7 @@ body[data-dsh-tenma] [data-composer-card] > :last-child > :last-child {
       // 改为 JS 按主时钟计算绝对位置：节点无论何时重建，下一帧即回到正确相位；
       // 相邻模块间距恒为 49px（进入/滑出两段共用同一缓动，锁定间距），永不重叠。
       var DOCK_SELECTOR = "[data-slot='conversation.composer.dock'] > *:has(> span)"
-      var SLOT = 49
+      var SLOT = 41                          // 数据条模块高度（620×41 等比）
       var HOLD = 5                          // 每模块停留秒数
       var SWING = 2                         // 进入 / 滑出各 2 秒
       var STAGGER = HOLD + SWING            // 相邻模块相位间隔 7s
