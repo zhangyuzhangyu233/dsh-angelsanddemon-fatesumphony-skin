@@ -302,10 +302,6 @@ body[data-dsh-tenma] [data-composer-card] textarea {
   height: auto !important;
   min-height: 0 !important;
 }
-/* 会话滚动体（root 第 2 子元素）：底部 padding 让最后一条消息停在输入卡片上方（座位 166 + 余量 24） */
-body[data-dsh-tenma] [data-slot='conversation'] > :first-child > :nth-child(2) {
-  padding-bottom: 190px;
-}
 /* 消息中的代码块背景：alpha 0.5 半透明（只命中代码块容器 .md-code-block，不含整条消息） */
 body[data-dsh-tenma] [data-slot='conversation'] div.md-code-block {
   background: rgba(249, 250, 251, 0.5) !important;
