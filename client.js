@@ -263,9 +263,9 @@ body[data-dsh-tenma] [data-composer-card] textarea {
   height: auto !important;
   min-height: 0 !important;
 }
-/* 工作区标签行右移：与输入框文字左缘对齐（x 449 → 594，挪 145px） */
+/* 工作区标签行右移：与输入框文字左缘对齐（x 449 → 594，挪 145px，当前微调 125px） */
 body[data-dsh-tenma] [data-slot='conversation.composer'] button[aria-label='选择工作区'] {
-  margin-left: 145px;
+  margin-left: 125px;
 }
 /* 附件轨 → 悬浮窗：内部样式原封不动，只把容器做成浮窗放在卡片正上方 */
 body[data-dsh-tenma] [data-composer-card] > :has(img):not([data-input-scroll]) {
