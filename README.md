@@ -1,6 +1,6 @@
 # dsh-tenma-skin · DSH《天魔命曲》皮肤
 
-基于同人游戏《弹丸论破：天魔命曲》(Angels & Demon Fate Symphony) 素材的
+基于同人游戏《弹丸论破：天魔命曲》(Angels & Demon Fate Symphony) 素材的（原作者：冰川蓝蓝）
 [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness) Web 皮肤插件。
 
 全新独立实现：**不基于任何其他皮肤插件**，只用游戏素材与 DSH 公开 DOM 钩子。
@@ -70,6 +70,6 @@
 ## 许可
 
 - **代码**（`host.js`、`client.js`、`cordis.patch.yml` 等）：[MIT](./LICENSE)
-- **游戏素材**（`assets/`）：[CC BY-NC 4.0](./LICENSE-ASSETS.md)，归属《弹丸论破：天魔命曲》同人游戏制作组
+- **游戏素材**（`assets/`）：[CC BY-NC 4.0](./LICENSE-ASSETS.md)，归属：冰川蓝蓝
 
 弹丸论破 (Danganronpa) 为 Spike Chunsoft 的注册商标；本插件为同人作品，与官方无关。
