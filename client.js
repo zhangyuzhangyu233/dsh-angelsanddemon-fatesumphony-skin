@@ -292,7 +292,9 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) {
   background: url('${U.buttomM}') center / calc(100% - 116px) 49px no-repeat;
   color: #16305f;
 }
-/* 五个文本模块：单向循环走马灯（底部滑入 → 顶部滑出，永不回滚），每模块可见 5 秒 */
+/* 数据文本模块：单向循环走马灯（底部滑入 → 顶部滑出，永不回滚），每模块可见 5 秒。
+   动画由插件 JS 主时钟每帧按当前 span 数量与序号重算 translateY ——
+   智能体运行中统计更新引发 React 重建节点也不会打乱相位，杜绝重叠。 */
 body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span {
   position: absolute;
   left: 0;
@@ -307,28 +309,8 @@ body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > 
 body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(even) {
   display: none;
 }
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(odd) {
-  animation: dsh-stat-marquee 35s ease-in-out infinite;
-}
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(1) { animation-delay: 0s; }
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(3) { animation-delay: -7s; }
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(5) { animation-delay: -14s; }
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(7) { animation-delay: -21s; }
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(9) { animation-delay: -28s; }
-/* 悬停：暂停走马灯（保持当前模块），不平铺数据 */
-body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span):hover > span {
-  animation-play-state: paused;
-}
-@keyframes dsh-stat-marquee {
-  0%     { transform: translateY(49px); }
-  5.72%  { transform: translateY(0); }
-  20%    { transform: translateY(0); }
-  25.72% { transform: translateY(-49px); }
-  100%   { transform: translateY(-196px); }
-}
 @media (prefers-reduced-motion: reduce) {
   body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(odd) {
-    animation: none;
     opacity: 0;
   }
   body[data-dsh-tenma] [data-slot='conversation.composer.dock'] > *:has(> span) > span:nth-child(1) {
@@ -426,8 +408,101 @@ body[data-dsh-tenma] [data-composer-card] > :last-child > :last-child {
       style.textContent = CSS
       document.head.appendChild(style)
 
+      // --- 底部数据条走马灯驱动：单一主时钟 + rAF 逐帧定位 ---
+      // 之前的做法是每个 span 一条独立 CSS 动画（负 delay 交错）。智能体运行中
+      // 统计文本频繁更新，React 重建 span 节点 → 动画各自重启、相位错位，
+      // 出现两个模块同时停留在可视槽位的完全重叠。
+      // 改为 JS 按主时钟计算绝对位置：节点无论何时重建，下一帧即回到正确相位；
+      // 相邻模块间距恒为 49px（进入/滑出两段共用同一缓动，锁定间距），永不重叠。
+      var DOCK_SELECTOR = "[data-slot='conversation.composer.dock'] > *:has(> span)"
+      var SLOT = 49
+      var HOLD = 5                          // 每模块停留秒数
+      var SWING = 2                         // 进入 / 滑出各 2 秒
+      var STAGGER = HOLD + SWING            // 相邻模块相位间隔 7s
+
+      // CSS ease-in-out（cubic-bezier(0.42,0,0.58,1)）的 y 分量：牛顿法解 x(t)=u
+      function easeInOut(u) {
+        if (u <= 0) return 0
+        if (u >= 1) return 1
+        var t = u
+        for (var i = 0; i < 6; i++) {
+          var inv = 1 - t
+          var x = 3 * inv * inv * t * 0.42 + 3 * inv * t * t * 0.58 + t * t * t
+          var dx = 1.26 * (inv * inv - 2 * inv * t) + 1.74 * (2 * t - 3 * t * t) + 3 * t * t
+          if (Math.abs(x - u) < 1e-4) break
+          t -= (x - u) / dx
+        }
+        var inv = 1 - t
+        return 3 * inv * t * t + t * t * t
+      }
+
+      // 相位 p（秒，0..D）→ translateY px：
+      //   进入 2s：+49 → 0（缓动）   停留 5s：0
+      //   滑出 2s：0 → -49（同缓动） 之后匀速上移 → -(K-1)*49 到周期末
+      function statPos(p, K) {
+        if (p < SWING) return SLOT * (1 - easeInOut(p / SWING))
+        if (p < SWING + HOLD) return 0
+        if (p < 2 * SWING + HOLD) return -SLOT * easeInOut((p - SWING - HOLD) / SWING)
+        var dur = STAGGER * K - (2 * SWING + HOLD)
+        if (dur <= 0) return -SLOT
+        var t = p - (2 * SWING + HOLD)
+        return -SLOT * (1 + (K - 2) * (t / dur))
+      }
+
+      var clockStart = performance.now() - 2000 // 启动即处于模块 1 的停留相位
+      var pausedTotal = 0
+      var pauseStart = 0
+      var rafId = 0
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+      var lastTransform = new WeakMap()
+
+      function nowClock() {
+        return performance.now() - clockStart - pausedTotal -
+          (pauseStart ? performance.now() - pauseStart : 0)
+      }
+
+      function setTransform(el, y) {
+        var value = y === 0 ? '' : 'translateY(' + y.toFixed(2) + 'px)'
+        if (lastTransform.get(el) !== value) {
+          lastTransform.set(el, value)
+          el.style.transform = value
+        }
+      }
+
+      function tick() {
+        rafId = requestAnimationFrame(tick)
+        var root = document.querySelector(DOCK_SELECTOR)
+        if (root === null) return
+        // 悬停暂停：用 :hover 状态判定，无需事件监听、随节点重建自动适配
+        var isHover = root.matches(':hover')
+        if (isHover && !pauseStart) pauseStart = performance.now()
+        else if (!isHover && pauseStart) {
+          pausedTotal += performance.now() - pauseStart
+          pauseStart = 0
+        }
+        var spans = root.children
+        var odd = []
+        for (var i = 0; i < spans.length; i++) {
+          if (i % 2 === 0) odd.push(spans[i])
+        }
+        var K = odd.length
+        var t = nowClock()
+        for (var i = 0; i < K; i++) {
+          if (K < 2 || reducedMotion.matches) {
+            setTransform(odd[i], 0)
+          } else {
+            var D = STAGGER * K
+            var p = ((t - STAGGER * i) % D + D) % D
+            setTransform(odd[i], statPos(p, K))
+          }
+        }
+      }
+
+      rafId = requestAnimationFrame(tick)
+
       ctx.effect(function () {
         return function () {
+          cancelAnimationFrame(rafId)
           style.remove()
           body.removeAttribute(BODY_ATTR)
         }
