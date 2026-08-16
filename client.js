@@ -302,8 +302,8 @@ body[data-dsh-tenma] [data-composer-card] textarea {
   height: auto !important;
   min-height: 0 !important;
 }
-/* 消息中的代码块背景：alpha 0.5 半透明（容器 div 包着 shiki 高亮的 pre） */
-body[data-dsh-tenma] [data-slot='conversation'] div:has(pre.shiki) {
+/* 消息中的代码块背景：alpha 0.5 半透明（只命中代码块容器 .md-code-block，不含整条消息） */
+body[data-dsh-tenma] [data-slot='conversation'] div.md-code-block {
   background: rgba(249, 250, 251, 0.5) !important;
 }
 /* 工作区标签行：左缘对准 talkingbar 左上角尖点（卡片左缘 446 + 69 ≈ 515） */
