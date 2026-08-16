@@ -81,7 +81,7 @@ body[data-dsh-tenma]::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('${U.background}') center / 100% 100% no-repeat;
+  background: url('${U.background}') center / cover no-repeat;
 }
 body[data-dsh-tenma] [data-slot='root'] > :first-child { background: transparent; }
 body[data-dsh-tenma] [data-slot='conversation'] > :first-child {
@@ -123,6 +123,7 @@ body[data-dsh-tenma] *:has(> [data-slot='sidebar'])::before {
   bottom: 0;
   width: 137px;
   pointer-events: none;
+  opacity: 0.6; /* 素材本身为 75% 白 → 叠加后约 45%，梯形条更透 */
   border: 78px solid transparent;
   border-width: 78px 0 90px 0;
   border-image: url('${U.leftbar}') 78 0 90 0 fill / 78px 0 90px 0 / 0 repeat;
@@ -199,7 +200,7 @@ body[data-dsh-tenma] [data-slot='sidebar'] > :first-child > :nth-child(2) {
   border-radius: 17px !important;
   color: #fff !important;
   font-weight: 600;
-  box-shadow: 0 3px 10px rgba(6, 30, 90, 0.35);
+  box-shadow: none;
 }
 body[data-dsh-tenma] [data-slot='sidebar'] > :first-child > :nth-child(2) svg { color: #fff; }
 /* 折叠态：顶部 logo 行与新会话按钮整体下移一点点 */
