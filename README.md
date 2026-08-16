@@ -1,4 +1,4 @@
-# 《弹丸论破：天魔命曲》主体DSH皮肤插件
+# 《弹丸论破：天魔命曲》主题DSH皮肤插件
 
 > `dsh-angelsanddemon-fatesumphony-skin` · DeepSeek Harness Web 皮肤插件，使用同人游戏《弹丸论破：天魔命曲》(Angels & Demon Fate Symphony) 的游戏素材制作。
 
