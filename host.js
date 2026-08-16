@@ -1,13 +1,13 @@
-// dsh-tenma-skin —— Node host half
+// dsh-angelsanddemon-fatesumphony-skin —— Node host half
 // Serves the bundled《弹丸论破：天魔命曲》skin assets without exposing
 // arbitrary filesystem paths.
 
 import { readFile } from 'node:fs/promises'
 
-export const name = 'dsh-tenma-skin'
+export const name = 'dsh-angelsanddemon-fatesumphony-skin'
 export const inject = ['webServer']
 
-const BASE = '/dsh-tenma-skin/assets'
+const BASE = '/dsh-angelsanddemon-fatesumphony-skin/assets'
 
 const ASSETS = {
   'background.jpg':       { hash: '9b11e97f04d82e8a82f05c080917eb0ebb7d52d5256d9b1183372ba302827762', type: 'image/jpeg' },

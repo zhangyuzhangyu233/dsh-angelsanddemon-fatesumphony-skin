@@ -1,4 +1,4 @@
-# dsh-tenma-skin · DSH《天魔命曲》皮肤
+# dsh-angelsanddemon-fatesumphony-skin · DSH《天魔命曲》皮肤
 
 基于同人游戏《弹丸论破：天魔命曲》(Angels & Demon Fate Symphony) 素材的（原作者：冰川蓝蓝）
 [DeepSeek Harness](https://github.com/deepseek-ai/DeepSeek-Harness) Web 皮肤插件。
@@ -37,7 +37,7 @@
 
 | 面 | 文件 | 说明 |
 | --- | --- | --- |
-| Host | `host.js` | 提供带内容哈希的不可变资源路由（`/dsh-tenma-skin/assets/*`，缓存优先） |
+| Host | `host.js` | 提供带内容哈希的不可变资源路由（`/dsh-angelsanddemon-fatesumphony-skin/assets/*`，缓存优先） |
 | Client | `client.js` | `__ModuleLoader__` 皮肤包：打 `body[data-dsh-tenma]` 标记并注入 CSS |
 | Bundle | `cordis.patch.yml` | dsh bundle layer 挂载声明 |
 
@@ -49,23 +49,23 @@
 
 1. 在 `package.json` 的 `dependencies` 中加入：
    ```json
-   "dsh-tenma-skin": "link:/绝对/路径/to/dsh-tenma-skin"
+   "dsh-angelsanddemon-fatesumphony-skin": "link:/绝对/路径/to/dsh-angelsanddemon-fatesumphony-skin"
    ```
-2. 在 profile 的 `dsh.profile.bundles` 中加入 `dsh-tenma-skin`。
+2. 在 profile 的 `dsh.profile.bundles` 中加入 `dsh-angelsanddemon-fatesumphony-skin`。
 3. 在 profile 的 `cordis.patch.yml` 中加入（插件自带的 bundle patch 会自动插入挂载）：
    ```yaml
-   - id: dsh-tenma-skin
-     name: dsh-tenma-skin
+   - id: dsh-angelsanddemon-fatesumphony-skin
+     name: dsh-angelsanddemon-fatesumphony-skin
    ```
 4. 在 profile 目录执行 `pnpm install`，然后**重启 dsh web**。
 
-> 也可尝试 `dsh plugin --profile web add link:/绝对/路径/to/dsh-tenma-skin`，
+> 也可尝试 `dsh plugin --profile web add link:/绝对/路径/to/dsh-angelsanddemon-fatesumphony-skin`，
 > 但 CLI 在某些环境不可靠，推荐手动编辑上述文件。
 
 ## 卸载
 
 从 profile 的 `package.json` / `dsh.profile.bundles` / `cordis.patch.yml` 移除
-`dsh-tenma-skin`，执行 `pnpm install` 并重启 dsh web。
+`dsh-angelsanddemon-fatesumphony-skin`，执行 `pnpm install` 并重启 dsh web。
 
 ## 许可
 

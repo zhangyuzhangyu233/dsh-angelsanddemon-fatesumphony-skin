@@ -1,4 +1,4 @@
-// dsh-tenma-skin —— 《弹丸论破：天魔命曲》 Web 皮肤 (Client)
+// dsh-angelsanddemon-fatesumphony-skin —— 《弹丸论破：天魔命曲》 Web 皮肤 (Client)
 //
 // 全新独立实现：仅使用同人游戏素材 + DSH 公开 DOM 钩子，
 // 不依赖、不引用任何其他皮肤插件。所有规则挂在 body[data-dsh-tenma] 下，
@@ -30,16 +30,16 @@
 //   侧栏第二个子元素                                         新会话按钮
 
 window.__ModuleLoader__.load({
-  id: 'dsh-tenma-skin',
+  id: 'dsh-angelsanddemon-fatesumphony-skin',
   factory: () => {
     var module = { exports: {} }
     var exports = module.exports
 
-    var name = 'dsh-tenma-skin'
+    var name = 'dsh-angelsanddemon-fatesumphony-skin'
     var inject = []
     var BODY_ATTR = 'data-dsh-tenma'
-    var STYLE_ID = 'dsh-tenma-skin/skin.css'
-    var A = '/dsh-tenma-skin/assets/'
+    var STYLE_ID = 'dsh-angelsanddemon-fatesumphony-skin/skin.css'
+    var A = '/dsh-angelsanddemon-fatesumphony-skin/assets/'
 
     var U = {
       background: A + 'background.9b11e97f04d82e8a.jpg',
