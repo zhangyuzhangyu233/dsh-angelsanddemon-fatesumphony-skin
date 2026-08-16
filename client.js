@@ -486,7 +486,7 @@ body[data-dsh-tenma] [data-composer-card] > :last-child > :last-child {
           if (i % 2 === 0) odd.push(spans[i])
         }
         var K = odd.length
-        var t = nowClock()
+        var t = nowClock() / 1000 // 秒：与 SWING/HOLD/STAGGER 同单位
         for (var i = 0; i < K; i++) {
           if (K < 2 || reducedMotion.matches) {
             setTransform(odd[i], 0)
