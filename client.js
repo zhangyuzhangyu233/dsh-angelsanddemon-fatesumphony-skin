@@ -133,11 +133,14 @@ body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem']:not([aria-selected=
   background: transparent !important;
   border: none !important;
 }
-/* 选中项背景缩短：贴合内容的紧凑药丸，靠左（不再横跨整行）；无边框 + 半透明白降低 Alpha */
+/* 选中项：无边框 + 半透明白降 Alpha；文字改回黑色；宽度恢复整行（不缩短） */
 body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true'] {
-  width: fit-content;
   background: rgba(255, 255, 255, 0.72) !important;
   border: none !important;
+  color: #000 !important;
+}
+body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true'] * {
+  color: #000 !important;
 }
 /* 用户消息气泡（“我的气泡”）：浅蓝白底色降低 Alpha，透出壁纸 */
 body[data-dsh-tenma] .gdEzaW_userStack .gdEzaW_bubble {
