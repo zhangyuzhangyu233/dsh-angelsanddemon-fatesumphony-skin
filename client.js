@@ -298,14 +298,13 @@ body[data-dsh-tenma] [data-input-scroll] {
 body[data-dsh-tenma] [data-input-scroll]::-webkit-scrollbar {
   display: none;
 }
-/* 文本输入区域：白色半透明背景（alpha 0.5），文字区不再直接透蓝色 talkingbar */
-body[data-dsh-tenma] [data-composer-card] [data-input-scroll] {
-  background: rgba(255, 255, 255, 0.5) !important;
-  border-radius: 8px;
-}
 body[data-dsh-tenma] [data-composer-card] textarea {
   height: auto !important;
   min-height: 0 !important;
+}
+/* 消息中的代码块背景：alpha 0.5 半透明（容器 div 包着 shiki 高亮的 pre） */
+body[data-dsh-tenma] [data-slot='conversation'] div:has(pre.shiki) {
+  background: rgba(249, 250, 251, 0.5) !important;
 }
 /* 工作区标签行：左缘对准 talkingbar 左上角尖点（卡片左缘 446 + 69 ≈ 515） */
 body[data-dsh-tenma] [data-slot='conversation.composer'] button[aria-label='选择工作区'] {
