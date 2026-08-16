@@ -306,6 +306,13 @@ body[data-dsh-tenma] [data-composer-card] textarea {
 body[data-dsh-tenma] [data-slot='conversation'] div.md-code-block {
   background: rgba(249, 250, 251, 0.5) !important;
 }
+/* 代码块标题栏：背景 alpha 0.65（banner 0.65，外层白色 wrap 透明避免叠层失真） */
+body[data-dsh-tenma] [data-slot='conversation'] div.md-code-block > :first-child {
+  background: transparent !important;
+}
+body[data-dsh-tenma] [data-slot='conversation'] div.md-code-block > :first-child > :first-child {
+  background: rgba(249, 250, 251, 0.65) !important;
+}
 /* 工作区标签行：左缘对准 talkingbar 左上角尖点（卡片左缘 446 + 69 ≈ 515） */
 body[data-dsh-tenma] [data-slot='conversation.composer'] button[aria-label='选择工作区'] {
   margin-left: 66px;
