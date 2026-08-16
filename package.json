@@ -1,0 +1,20 @@
+{
+  "name": "dsh-tenma-skin",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness Web 皮肤：《弹丸论破：天魔命曲》同人游戏素材全量皮肤。",
+  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "theme", "skin", "danganronpa", "tenma"],
+  "license": "MIT",
+  "type": "module",
+  "main": "./host.js",
+  "exports": {
+    ".": "./host.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": ["host.js", "client.js", "cordis.patch.yml", "assets", "README.md", "LICENSE", "LICENSE-ASSETS.md"],
+  "engines": { "node": ">=20" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web" }
+  }
+}

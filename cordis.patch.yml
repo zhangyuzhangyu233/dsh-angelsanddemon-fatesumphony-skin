@@ -1,0 +1,4 @@
+# dsh bundle layer: mount the Tenma Meikyoku skin (client + host asset routes).
+- insert:
+    - id: dsh-tenma-skin
+      name: dsh-tenma-skin
