@@ -46,15 +46,18 @@
 
 以 `web` profile 为例（`~/.dsh/profiles/web/`）：
 
-1. **添加依赖** —— 在 profile 的 `package.json` `dependencies` 中加入（任选其一）：
+1. **添加依赖** —— 在 profile 目录执行：
 
-   ```json
-   "dsh-angelsanddemon-fatesumphony-skin": "github:zhangyuzhangyu233/dsh-angelsanddemon-fatesumphony-skin"
+   ```sh
+   pnpm add dsh-angelsanddemon-fatesumphony-skin
    ```
-   或本地开发（`link:` 指向本仓库路径）：
+   或直接编辑 `package.json` 的 `dependencies`：
    ```json
-   "dsh-angelsanddemon-fatesumphony-skin": "link:C:/path/to/dsh-angelsanddemon-fatesumphony-skin"
+   "dsh-angelsanddemon-fatesumphony-skin": "^1.0.0"
    ```
+   其他方式（任选其一）：
+   - 从 GitHub 安装：`"dsh-angelsanddemon-fatesumphony-skin": "github:zhangyuzhangyu233/dsh-angelsanddemon-fatesumphony-skin"`
+   - 本地开发（`link:` 指向本仓库路径）：`"dsh-angelsanddemon-fatesumphony-skin": "link:C:/path/to/dsh-angelsanddemon-fatesumphony-skin"`
 
 2. **注册 bundle** —— 在 profile 的 `dsh.profile.bundles` 中加入：
    ```json
