@@ -44,44 +44,31 @@
 
 ## 📦 安装
 
-以 `web` profile 为例（`~/.dsh/profiles/web/`）：
+使用 npm 安装：
 
-1. **添加依赖** —— 在 profile 目录执行：
+```sh
+npm install dsh-angelsanddemon-fatesumphony-skin
+```
 
-   ```sh
-   pnpm add dsh-angelsanddemon-fatesumphony-skin
-   ```
-   或直接编辑 `package.json` 的 `dependencies`：
-   ```json
-   "dsh-angelsanddemon-fatesumphony-skin": "^1.0.0"
-   ```
-   其他方式（任选其一）：
-   - 从 GitHub 安装：`"dsh-angelsanddemon-fatesumphony-skin": "github:zhangyuzhangyu233/dsh-angelsanddemon-fatesumphony-skin"`
-   - 本地开发（`link:` 指向本仓库路径）：`"dsh-angelsanddemon-fatesumphony-skin": "link:C:/path/to/dsh-angelsanddemon-fatesumphony-skin"`
+以 `web` profile 为例（`~/.dsh/profiles/web/`），安装后还需：
 
-2. **注册 bundle** —— 在 profile 的 `dsh.profile.bundles` 中加入：
+1. **注册 bundle** —— 在 profile 的 `dsh.profile.bundles` 中加入：
    ```json
    "dsh-angelsanddemon-fatesumphony-skin"
    ```
 
-3. **挂载声明** —— 在 profile 的 `cordis.patch.yml` 中加入：
+2. **挂载声明** —— 在 profile 的 `cordis.patch.yml` 中加入：
    ```yaml
    - id: dsh-angelsanddemon-fatesumphony-skin
      name: dsh-angelsanddemon-fatesumphony-skin
    ```
 
-4. **安装并重启** —— 在 profile 目录执行：
-   ```sh
-   pnpm install
-   # 然后重启 dsh web
-   ```
-
-> 也可尝试 `dsh plugin --profile web add <dependency>`，但 CLI 在某些环境不可靠，推荐手动编辑上述文件。
+3. **重启 dsh web** 生效
 
 ## 🗑️ 卸载
 
 从 profile 的 `package.json` / `dsh.profile.bundles` / `cordis.patch.yml` 中移除
-`dsh-angelsanddemon-fatesumphony-skin`，执行 `pnpm install` 并重启 dsh web。
+`dsh-angelsanddemon-fatesumphony-skin`，执行 `npm uninstall dsh-angelsanddemon-fatesumphony-skin` 并重启 dsh web。
 
 ## 🛠️ 开发
 
