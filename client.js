@@ -194,10 +194,10 @@ body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true
 body[data-dsh-tenma] [data-sidebar-collapsed] [data-slot='sidebar'] [role='treeitem'][aria-selected='true']::before {
   display: none;
 }
-/* 设置按钮上移避开底部梯形收口，缩短至与新会话药丸同宽（100px），内容居中，贴左 */
+/* 设置按钮上移避开底部梯形收口，缩短至与新会话药丸同宽（100px），内容居中，贴左缘 */
 body[data-dsh-tenma] [data-slot='sidebar.settings'] > button[aria-haspopup='dialog'] {
   width: 100px !important;
-  margin: 4px 0 100px !important;
+  margin: 4px -12px 100px !important;
   justify-content: center !important;
   padding: 6px 0 !important;
 }
@@ -205,7 +205,7 @@ body[data-dsh-tenma] [data-sidebar-collapsed] [data-slot='sidebar.settings'] > b
   width: 34px !important;
   padding: 0 !important;
   border-radius: 50% !important;
-  margin: 4px 0 100px !important;
+  margin: 4px -12px 100px !important;
 }
 
 /* --- 5. 新会话按钮：newsession 药丸（紧凑；品牌按钮 aria 相同，故用结构定位） --- */
