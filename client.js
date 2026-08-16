@@ -128,9 +128,10 @@ body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-ch
 body[data-dsh-tenma] [data-slot='sidebar.workspaces'] [role='tree'] button {
   padding-left: 9px;
 }
-/* 未选中的会话项：去掉白色半透明背景（Alpha 归零，选中项保留纯白） */
-body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='false'] {
+/* 所有未选中条目（会话 + 工作区行）：白色半透明背景清零 + 去掉线框；选中项保留纯白/蓝框 */
+body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem']:not([aria-selected='true']) {
   background: transparent !important;
+  border: none !important;
 }
 
 /* --- 4. 左侧栏：只保留 leftbar 梯形条（顶斜帽 78px + 中段 repeat + 底斜收口 90px），
