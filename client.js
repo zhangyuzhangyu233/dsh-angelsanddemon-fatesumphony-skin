@@ -133,18 +133,18 @@ body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem']:not([aria-selected=
   background: transparent !important;
   border: none !important;
 }
-/* 选中项：无边框 + 半透明白降 Alpha；文字改回黑色；宽度恢复整行（不缩短） */
+/* 选中项：无边框 + 半透明白降 Alpha（0.5）；文字偏蓝；宽度恢复整行（不缩短） */
 body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true'] {
-  background: rgba(255, 255, 255, 0.72) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
   border: none !important;
-  color: #000 !important;
+  color: #12305e !important;
 }
 body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true'] * {
-  color: #000 !important;
+  color: #12305e !important;
 }
 /* 用户消息气泡（“我的气泡”）：浅蓝白底色降低 Alpha，透出壁纸 */
 body[data-dsh-tenma] .gdEzaW_userStack .gdEzaW_bubble {
-  background: rgba(237, 243, 254, 0.65) !important;
+  background: rgba(237, 243, 254, 0.5) !important;
 }
 
 /* --- 4. 左侧栏：只保留 leftbar 梯形条（顶斜帽 78px + 中段 repeat + 底斜收口 90px），
