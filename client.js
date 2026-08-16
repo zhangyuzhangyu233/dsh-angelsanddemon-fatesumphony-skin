@@ -108,6 +108,22 @@ body[data-dsh-tenma] [data-slot='conversation'] > :first-child::before {
 
 /* --- 3. 空会话（hero 态）：跟随全局壁纸（效果图 JPG 仅作参考，不再当背景用） --- */
 
+/* --- 3.5 工作区标题行：右侧三个图标（搜索/状态/添加）移到“工作区”文字下方 --- */
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child {
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: flex-start;
+  row-gap: 2px;
+  padding-bottom: 3px;
+}
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child > :first-child {
+  flex: 1 0 100%;
+  max-width: none !important;
+}
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child > :nth-child(2) {
+  margin-left: 0;
+}
+
 /* --- 4. 左侧栏：只保留 leftbar 梯形条（顶斜帽 78px + 中段 repeat + 底斜收口 90px），
    其余区域透明透出壁纸；展开/折叠渲染不变 --- */
 body[data-dsh-tenma] *:has(> [data-slot='sidebar']) {
