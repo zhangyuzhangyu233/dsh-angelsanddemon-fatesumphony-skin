@@ -298,6 +298,11 @@ body[data-dsh-tenma] [data-input-scroll] {
 body[data-dsh-tenma] [data-input-scroll]::-webkit-scrollbar {
   display: none;
 }
+/* 文本输入区域：白色半透明背景（alpha 0.5），文字区不再直接透蓝色 talkingbar */
+body[data-dsh-tenma] [data-composer-card] [data-input-scroll] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 8px;
+}
 body[data-dsh-tenma] [data-composer-card] textarea {
   height: auto !important;
   min-height: 0 !important;
