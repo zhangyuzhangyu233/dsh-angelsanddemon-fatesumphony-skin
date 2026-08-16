@@ -133,9 +133,15 @@ body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem']:not([aria-selected=
   background: transparent !important;
   border: none !important;
 }
-/* 选中项背景缩短：贴合内容的紧凑药丸，靠左（不再横跨整行） */
+/* 选中项背景缩短：贴合内容的紧凑药丸，靠左（不再横跨整行）；无边框 + 半透明白降低 Alpha */
 body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='true'] {
   width: fit-content;
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: none !important;
+}
+/* 用户消息气泡（“我的气泡”）：浅蓝白底色降低 Alpha，透出壁纸 */
+body[data-dsh-tenma] .gdEzaW_userStack .gdEzaW_bubble {
+  background: rgba(237, 243, 254, 0.65) !important;
 }
 
 /* --- 4. 左侧栏：只保留 leftbar 梯形条（顶斜帽 78px + 中段 repeat + 底斜收口 90px），
