@@ -124,6 +124,15 @@ body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-ch
   margin-left: 0;
 }
 
+/* 3.6 会话树：展开/折叠按钮靠左对齐（去掉 28px 左内边距，与列表文字 x21 对齐） */
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] [role='tree'] button {
+  padding-left: 9px;
+}
+/* 未选中的会话项：去掉白色半透明背景（Alpha 归零，选中项保留纯白） */
+body[data-dsh-tenma] [data-slot='sidebar'] [role='treeitem'][aria-selected='false'] {
+  background: transparent !important;
+}
+
 /* --- 4. 左侧栏：只保留 leftbar 梯形条（顶斜帽 78px + 中段 repeat + 底斜收口 90px），
    其余区域透明透出壁纸；展开/折叠渲染不变 --- */
 body[data-dsh-tenma] *:has(> [data-slot='sidebar']) {
