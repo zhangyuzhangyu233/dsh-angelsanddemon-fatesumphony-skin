@@ -23,6 +23,7 @@ const ASSETS = {
   'newsession.png':       { hash: 'eb61c51405b8daf8ca33dc8b6e0de7e3894d4309495fe86ea77a6709b51b8fee', type: 'image/png' },
   'selected.png':         { hash: '0e38b2e284d6067f7f9f5da07dfe1b9605d600ddae40ee1001d9ef6118bb8111', type: 'image/png' },
   'next.png':             { hash: '5c63edcfda2d4d8f131c54b6435420bf6866d6b35ec7c39772af9cb3fc27fa30', type: 'image/png' },
+  'rolling.png':          { hash: 'd35a9c77834f599b842bae50735610ee1e02fd7074396cdba20a7ddb87d0dcf5', type: 'image/png' },
   'mouse.cur':            { hash: '514fc4fd81c841c0ea27ef4894f4a79768e44847a5567c6447219205d7511202', type: 'image/x-icon' },
   'mouse-small.cur':      { hash: 'ad621940735d7dbdd95f41e9931026d54fc098dfe2646ed70875aa6b2c6697c8', type: 'image/x-icon' },
 }

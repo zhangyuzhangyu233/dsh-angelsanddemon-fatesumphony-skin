@@ -15,6 +15,7 @@
   - 由插件 JS 主时钟驱动（rAF），智能体运行中统计更新导致的节点重建不会打乱相位、不会重叠
   - 鼠标悬停时暂停在当前模块
 - ➡️ **发送按钮** —— 使用 `next.png`（蓝 V 箭头）悬浮于输入卡片右侧
+- 🎡 **运行轮盘** —— 智能体运行中，在官方“Deep diving...”状态行左侧插入 `rolling.png` 天命轮盘并匀速旋转（尊重 `prefers-reduced-motion`）
 - 💊 **新会话药丸** —— `newsession.png`，紧凑不撑满整行，无阴影
 
 ## 🧩 素材映射
@@ -29,6 +30,7 @@
 | `buttom-M.png` | `buttom-M.png` | 底部数据条中段（横向拉伸） |
 | `newsession.png` | `newsession.png` | 新会话按钮 |
 | `next.png` | `next.png` | 发送消息按钮 |
+| `rolling.png` | `rolling.png` | 运行中“Deep diving...”左侧的旋转轮盘 |
 
 > 其余打包素材（`hero.jpg`、`buttom-L/R.png`、`talkingbar_lighter.png`、`send.png`、`selected.png`、`mouse.cur`）随包提供但当前皮肤未引用，保留以便后续迭代。
 
@@ -75,6 +77,7 @@ npm install dsh-angelsanddemon-fatesumphony-skin
 - `host.js` / `client.js` 均为纯 JS 模块，无构建步骤
 - 修改 `client.js` 后刷新页面即可生效（资源路由带 `no-cache`）
 - 新增/修改 `assets/` 中的素材后需更新 `host.js` 里的哈希并重启 dsh web
+- `rolling.png`（运行轮盘）特殊：`client.js` 内嵌了一份 base64 副本，服务器未重启时刷新即可生效；`host.js` 的哈希路由注册后（重启后），皮肤会自动升级为不可变 URL。若替换该素材，需同步更新 `client.js` 里的 `rollingData` 内嵌副本与 `host.js` 的哈希
 - 所有 CSS 选择器均以 `body[data-dsh-tenma]` 为前缀，依赖 DSH web 公开的 `data-slot` / `data-composer-*` / `aria-label` 钩子
 
 ## 📜 许可
