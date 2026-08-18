@@ -114,15 +114,18 @@ body[data-dsh-tenma] [data-slot='conversation'] > :first-child::before {
 
 /* --- 3. 空会话（hero 态）：跟随全局壁纸（效果图 JPG 仅作参考，不再当背景用） --- */
 
-/* --- 3.5 工作区标题行：右侧三个图标（搜索/状态/添加）移到“工作区”文字下方 --- */
-body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child {
+/* --- 3.5 工作区标题行：右侧三个图标（搜索/状态/添加）移到“工作区”文字下方 ---
+   注意：搜索展开时（搜索按钮 aria-expanded=true）这两条必须让位给官方单行布局，
+   否则标题占满整行的 flex 布局会在搜索框 max-width 过渡收尾时把它挤回 0 宽，
+   造成“点搜索弹出输入框后一闪即消失”。 */
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child:not(:has([aria-expanded='true'])) {
   flex-wrap: wrap;
   height: auto;
   justify-content: flex-start;
   row-gap: 2px;
   padding-bottom: 3px;
 }
-body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child > :first-child {
+body[data-dsh-tenma] [data-slot='sidebar.workspaces'] > :first-child > :first-child:not(:has([aria-expanded='true'])) > :first-child {
   flex: 1 0 100%;
   max-width: none !important;
 }
