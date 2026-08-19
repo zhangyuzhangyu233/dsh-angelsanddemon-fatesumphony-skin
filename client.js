@@ -178,8 +178,11 @@ body[data-dsh-tenma] *:has(> [data-slot='sidebar'])::before {
 }
 body[data-dsh-tenma] [data-slot='sidebar'] > :first-child {
   position: relative;
-  z-index: 1;
   background: transparent;
+  /* 不要给 z-index：设 z-index:1 会让侧栏成为 z=1 的层叠上下文，
+     与输入框区域（wSkVaW_composerStack 同为 z=1 且 DOM 靠后）打平，
+     设置面板 overlay（z=1000）被困在侧栏上下文里，反而被输入框盖住。
+     position:relative 已足以让侧栏内容排在 leftbar 装饰条（::before）之上。 */
 }
 body[data-dsh-tenma] [data-slot='sidebar'] {
   --dsw-alias-label-primary: ${INK};
